@@ -1,0 +1,25 @@
+{
+  "name": "projekt_strona_psychologa",
+  "version": "1.0.0",
+  "description": "Final project for the course “Software Engineering.” Website for a psychologist, featuring an appointment booking system.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "migrate": "docker exec -i backend-db-1 psql -U pguser -d projektdb < migrations/001_init.sql"
+  },
+  "author": "Jakub Dyoniziak",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
