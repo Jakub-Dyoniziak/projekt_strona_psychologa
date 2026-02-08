@@ -1,21 +1,20 @@
-import Login from './pages/login';
+import { useState } from 'react';
 import { useAuth } from './auth/AuthContext';
+import Login from './pages/login';
+import Register from './pages/register';
+import Dashboard from './pages/dashboard';
 
 function App() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
+  const [mode, setMode] = useState('login');
 
   if (!user) {
-    return <Login />;
+    return mode === 'login'
+      ? <Login onSwitch={() => setMode('register')} />
+      : <Register onSwitch={() => setMode('login')} />;
   }
 
-  return (
-    <div>
-      <h1>Witaj, {user.first_name}</h1>
-      <p>Rola: {user.is_psychologist ? 'Psycholog' : 'Pacjent'}</p>
-
-      <button onClick={logout}>Wyloguj</button>
-    </div>
-  );
+  return <Dashboard />;
 }
 
 export default App;

@@ -9,15 +9,16 @@ export async function apiFetch(path, options = {}) {
     ...options.headers
   };
 
-  const response = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(`${API_URL}${path}`, {
     ...options,
     headers
   });
 
-  if (!response.ok) {
-    const error = await response.json().catch(() => ({}));
-    throw new Error(error.error || 'API error');
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    throw new Error(data.error || 'API error');
   }
 
-  return response.json();
+  return data;
 }
