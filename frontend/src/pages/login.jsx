@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { apiFetch } from '../api/client';
 import { useAuth } from '../auth/AuthContext';
+import "./login_style.css";
 
 function Login() {
   const { login } = useAuth();
@@ -25,7 +26,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div id="log_panel">
       <h2>Logowanie</h2>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -47,7 +48,7 @@ function Login() {
           required
         />
 
-        <button type="submit">Zaloguj</button>
+        <button id="log_button" type="submit">Zaloguj</button>
       </form>
     </div>
   );
